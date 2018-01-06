@@ -1,6 +1,6 @@
 {
   "name": "component-css-loader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Component stylesheets loader",
   "main": "component_css_loader.js",
   "dependencies": {
@@ -8,10 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kossnocorp/component-css-loader"
+    "url": "https://github.com/gserrg/component-css-loader"
   },
   "keywords": ["webpack", "react"],
   "author": "Sasha Koss <kossnocorp@gmail.com>",
+  "contributors": ["gserrg <gor08serg@ya.ru>"],
   "license": "MIT"
 }
 
