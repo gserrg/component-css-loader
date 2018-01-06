@@ -1,5 +1,6 @@
 var fs = require('fs');
 var loaderUtils = require('loader-utils');
+var path = require('path');
 
 module.exports = function(source) {
   this.cacheable && this.cacheable();
@@ -7,10 +8,13 @@ module.exports = function(source) {
   var query = loaderUtils.parseQuery(this.query);
   var ext = query.ext || 'styl';
 
-  var componentFileName = this.resourcePath.match(/[^\/]+$/)[0];
-  var componentExt = componentFileName.match(/\.(.+)$/)[1];
-  var styleFileName = componentFileName.replace(componentExt, ext);
-  var stylePath = this.resourcePath.replace(componentExt, ext);
+  var componentFileName = path.basename(this.resourcePath);
+  var componentExt = path.extname(componentFileName);
+  if(componentExt === "") {
+    return source;
+  }
+  var styleFileName = componentFileName.replace(componentExt, '.' + ext);
+  var stylePath = this.resourcePath.replace(componentFileName, styleFileName);
 
   try {
     var stats = fs.statSync(stylePath);
